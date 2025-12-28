@@ -1,0 +1,207 @@
+%%
+%% This is file `dtx-style.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% hithesis.dtx  (with options: `dtx-style')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright (C) 2017-2025 by Chu Yanshuo <yanshuoc@gmail.com>
+%% 
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3a
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in:
+%% 
+%% http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.3a or later is part of all distributions of LaTeX
+%% version 2004/10/01 or later.
+%% 
+%% To produce the documentation run the original source files ending with `.dtx'
+%% through LaTeX.
+%% 
+\ProvidesPackage{dtx-style}
+\RequirePackage{hypdoc}
+\RequirePackage[UTF8,scheme=chinese,fontset=fandol]{ctex}
+  % \RequirePackage{newpxtext}
+  % \RequirePackage{newpxmath}
+  \setmainfont{TeXGyrePagellaX}[
+    Extension   = .otf,
+    UprightFont = *-Regular,
+    BoldFont    = *-Bold,
+    ItalicFont  = *-Italic,
+    BoldItalicFont = *-BoldItalic,
+  ]
+\setsansfont{IBMPlexSansCondensed}[%
+    Extension      = .otf,
+    UprightFont    = *-Regular,
+    BoldFont       = *-Bold,
+    ItalicFont     = *-Italic,
+    BoldItalicFont = *-BoldItalic
+  ]
+\setmainfont{Latin Modern Roman}
+
+\RequirePackage[
+  top=2.5cm, bottom=2.5cm,
+  left=4cm, right=2cm,
+  headsep=3mm]{geometry}
+\RequirePackage{array,longtable,booktabs}
+\heavyrulewidth=1.5pt
+\lightrulewidth=1pt
+\cmidrulewidth=0.5pt
+\RequirePackage{listings}
+\RequirePackage{fancyhdr}
+\RequirePackage{xcolor}
+\RequirePackage{enumitem}
+\RequirePackage{etoolbox}
+\RequirePackage{metalogo}
+\RequirePackage{hyperref}
+\RequirePackage{ninecolors}
+
+\colorlet{hit@macro}{blue!60!black}
+\colorlet{hit@env}{blue!70!black}
+\colorlet{hit@option}{purple}
+\patchcmd{\PrintMacroName}{\MacroFont}{\MacroFont\bfseries\color{hit@macro}}{}{}
+\patchcmd{\PrintDescribeMacro}{\MacroFont}{\MacroFont\bfseries\color{hit@macro}}{}{}
+\patchcmd{\PrintDescribeEnv}{\MacroFont}{\MacroFont\bfseries\color{hit@env}}{}{}
+\patchcmd{\PrintEnvName}{\MacroFont}{\MacroFont\bfseries\color{hit@env}}{}{}
+
+\def\DescribeOption{%
+  \leavevmode\@bsphack\begingroup\MakePrivateLetters%
+  \Describe@Option}
+\def\Describe@Option#1{\endgroup
+  \marginpar{\raggedleft\PrintDescribeOption{#1}}%
+  \hit@special@index{option}{#1}\@esphack\ignorespaces}
+\def\PrintDescribeOption#1{\strut \MacroFont\bfseries\sffamily\color{hit@option} #1\ }
+\def\hit@special@index#1#2{\@bsphack
+  \begingroup
+    \HD@target
+    \let\HDorg@encapchar\encapchar
+    \edef\encapchar usage{%
+      \HDorg@encapchar hdclindex{\the\c@HD@hypercount}{usage}%
+    }%
+    \index{#2\actualchar{\string\ttfamily\space#2}
+           (#1)\encapchar usage}%
+    \index{#1:\levelchar#2\actualchar
+           {\string\ttfamily\space#2}\encapchar usage}%
+  \endgroup
+  \@esphack}
+
+\lstdefinestyle{lstStyleBase}{%
+   basicstyle=\small\ttfamily,
+   aboveskip=\medskipamount,
+   belowskip=\medskipamount,
+   lineskip=0pt,
+   boxpos=c,
+   showlines=false,
+   extendedchars=true,
+   upquote=true,
+   tabsize=2,
+   showtabs=false,
+   showspaces=false,
+   showstringspaces=false,
+   numbers=none,
+   linewidth=\linewidth,
+   xleftmargin=4pt,
+   xrightmargin=0pt,
+   resetmargins=false,
+   breaklines=true,
+   breakatwhitespace=false,
+   breakindent=0pt,
+   breakautoindent=true,
+   columns=flexible,
+   keepspaces=true,
+   gobble=2,
+   framesep=3pt,
+   rulesep=1pt,
+   framerule=1pt,
+   backgroundcolor=\color{gray!5},
+   stringstyle=\color{green!40!black!100},
+   keywordstyle=\bfseries\color{blue!50!black},
+   commentstyle=\slshape\color{black!60}}
+
+   \lstdefinestyle{lstStyleShell}{%
+   style=lstStyleBase,
+   frame=l,
+   rulecolor=\color{purple},
+   language=bash,
+   morekeywords  = [1]
+   {
+     tlmgr, pdflatex, latexmk, xelatex, cd, dir, mkdir,
+     ls, del, rm, mv, move, cp, copy, code, bibtex, biber,
+     texdoc, kpsewhich, texhash, splitindex, latex, makeindex,
+     make
+   },
+    morekeywords  = [2]{action, info, option, update, install, remove, version, restore},
+    otherkeywords  = {--, -s, -o, -xelatex},
+    morekeywords  = [3]{--, -s, -o, -xelatex},
+    keywordstyle  = [1]{\bfseries},
+    keywordstyle  = [2]{\color{azure4}},
+    keywordstyle  = [3]{\color{green5}}
+    % moredelim     = [s][\color{green5}]{\ -}{\ },
+   }
+
+\lstdefinestyle{lstStyleLaTeX}{%
+    style=lstStyleBase,
+    frame=l,
+    rulecolor=\color{violet},
+    language=[LaTeX]TeX,
+    texcsstyle  =*[1]{\color{azure4}\bfseries},
+    texcsstyle   =*[2]{\color{red3}\bfseries},
+    moretexcs   = [1]
+      {
+        LaTeX, LaTex, label, ref,
+        tableofcontents, bibliography, bibliographystyle,
+        cite, NeedsTeXFormat, ProvidesPackage, newcommand, mycmd,
+        addbibresource, printbibliography, graphicspath,
+        frontmatter, mainmatter, backmatter, printsubindex,
+        makecover, authorization, hitsetup, dachu,
+        chuhao, xiaochu, yihao, xiaoyi, erhao, xiaoer, sanhao,
+        xiaosan, sihao, banxiaosi, xiaosi, dawu, wuhao, xiaowu, liuhao, xiaoliu, qihao, bahao,
+        bicaption, caption, ltfontsize, longbionenumcaption, subfigure, includegraphics,
+        toprule, midrule, bottomrule, endhead, endfirsthead, endfoot
+      },
+    deletetexcs  = [1]{documentclass, usepackage, begin, end},
+    moretexcs    = [2]{usepackage, documentclass, begin, end},
+  }
+
+\lstnewenvironment{latex}{\lstset{style=lstStyleLaTeX}}{}
+\lstnewenvironment{shell}{\lstset{style=lstStyleShell}}{}
+
+\setlist{nosep}
+
+\DeclareDocumentCommand{\option}{}{\meta}
+\DeclareDocumentCommand{\env}{m}{\textbf{\texttt{#1}}}
+\DeclareDocumentCommand{\pkg}{s m}{%
+  \textsf{#2}\IfBooleanF#1{\hit@special@index{package}{#2}}}
+\DeclareDocumentCommand{\cls}{s m}{%
+  \textsf{#2}\IfBooleanF#1{\hit@special@index{class}{#2}}}
+\DeclareDocumentCommand{\file}{s m}{%
+  \texttt{#2}\IfBooleanF#1{\hit@special@index{file}{#2}}}
+\newcommand{\myentry}[1]{%
+  \marginpar{\raggedleft\color{purple}\bfseries\strut #1}}
+\newcommand{\note}[2][Note]{{%
+  \color{magenta}{\bfseries #1}\emph{#2}}}
+\NewDocumentCommand\issue{o}{%
+  \IfValueTF{#1}
+    {\href{https://github.com/hithesis/hithesis/issues/#1}{issue: \##1}}
+    {\href{https://github.com/hithesis/hithesis/issues}{issues}}
+}
+\def\hitszthesis{\href{https://github.com/YangLaTeX/hitszthesis}{\textsc{Hitsz}\-\textsc{Thesis}}{}}
+\newcommand{\pozhehao}{——}
+\def\hithesis{\textsc{hi}\-\textsc{Thesis}}
+\def\hit{哈尔滨工业大学}
+\def\PGR{\href{http://hitgs.hit.edu.cn/aa/fd/c3425a109309/page.htm}
+{《\hit 研究生学位论文撰写规范》}}
+\def\UGR{\href{http://jwc.hit.edu.cn/2566/list.htm}
+{《\hit 本科生毕业论文撰写规范》}}
+  \NewDocumentEnvironment{hitrgu}{o o}
+  { \IfNoValueTF{#1}{\PGR,\UGR}{#1}\IfNoValueF{#2}{#2中}%
+\color{red}规定：“}{”}
+
+\endinput
+%%
+%% End of file `dtx-style.sty'.
