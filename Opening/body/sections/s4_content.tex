@@ -88,27 +88,31 @@
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}[
-    node distance=1.5cm and 2cm,
-    block/.style={rectangle, draw, fill=blue!10, text width=5cm, text centered, rounded corners, minimum height=1cm},
-    smallblock/.style={rectangle, draw, fill=green!10, text width=4cm, text centered, rounded corners, minimum height=0.8cm},
+    scale=0.85, % 整体缩放
+    transform shape,
+    node distance=1.2cm and 1.5cm,
+    block/.style={rectangle, draw, fill=blue!10, text width=4.5cm, text centered, rounded corners, minimum height=1cm, font=\small},
+    smallblock/.style={rectangle, draw, fill=green!10, text width=3.5cm, text centered, rounded corners, minimum height=0.8cm, font=\small},
+    tinyblock/.style={rectangle, draw, fill=green!5, text width=3.2cm, text centered, rounded corners, minimum height=0.7cm, font=\footnotesize},
+    validation/.style={rectangle, draw, fill=orange!10, text width=4cm, text centered, rounded corners, minimum height=0.8cm, font=\small},
     arrow/.style={->, >=stealth, thick}
 ]
 
 % 顶层框架
-\node [block] (framework) {多模态人工智能驱动的解析框架};
+\node [block] (framework) {多模态人工智能\\驱动的解析框架};
 
 % 三个核心模块
-\node [smallblock, below left=of framework, xshift=-2cm] (vision) {视觉语义分割\\（形式表征）};
+\node [smallblock, below left=of framework, xshift=-1.5cm] (vision) {视觉语义分割\\（形式表征）};
 \node [smallblock, below=of framework] (knowledge) {知识图谱建模\\（规则表征）};
-\node [smallblock, below right=of framework, xshift=2cm] (reasoning) {跨模态推理\\（语义关联）};
+\node [smallblock, below right=of framework, xshift=1.5cm] (reasoning) {跨模态推理\\（语义关联）};
 
 % 具体技术
-\node [smallblock, below=of vision] (vision-detail) {建筑图像 $\rightarrow$\\空间元素识别};
-\node [smallblock, below=of knowledge] (knowledge-detail) {礼制文献 $\rightarrow$\\转译结构形式化};
-\node [smallblock, below=of reasoning] (reasoning-detail) {图谱+LLM $\rightarrow$\\RAG语义问答};
+\node [tinyblock, below=of vision] (vision-detail) {建筑图像 $\rightarrow$\\空间元素识别};
+\node [tinyblock, below=of knowledge] (knowledge-detail) {礼制文献 $\rightarrow$\\转译结构形式化};
+\node [tinyblock, below=of reasoning] (reasoning-detail) {图谱+LLM $\rightarrow$\\RAG语义问答};
 
 % 案例验证
-\node [block, below=3cm of knowledge, fill=orange!10] (validation) {广府宗祠案例验证};
+\node [validation, below=2.5cm of knowledge] (validation) {广府宗祠案例验证};
 
 % 箭头连接
 \draw [arrow] (framework) -- (vision);
@@ -129,16 +133,20 @@
 \end{figure}
 
 \subsubsection{研究方法}
-\begin{tabularx}{\textwidth}{@{} p{2.5cm} p{3cm} L @{}}
+\noindent 
+\begingroup % 开始局部作用域
+\footnotesize
+\begin{tabularx}{\textwidth}{@{} p{3cm} p{3.5cm} X @{}}
 \toprule
 \textbf{研究阶段} & \textbf{核心方法} & \textbf{技术手段} \\ \midrule
-理论建构 & 文献分析、概念演绎 & 类型学批判性阅读；"规则驱动型建筑"理论框架构建 \\ \addlinespace
-知识库构建 & 本体建模、知识抽取 & CIDOC CRM本体扩展；基于大语言模型的自动化知识抽取 \\ \addlinespace
-形式分析 & 语义分割、空间句法 & 深度学习模型训练（SAM/DeepLabV3+）；拓扑计算与"伦理句法"建模 \\ \addlinespace
-规则分析 & 符号学解码、图谱推理 & 知识图谱推理；基于RAG架构的大语言模型多跳推理 \\ \addlinespace
-案例验证 & 田野调查、专家评审 & 实地测绘与影像采集；跨案例对比验证；专家知识交叉验证 \\
+理论建构 & 文献分析、概念演绎 & 类型学批判性阅读；``规则驱动型建筑''理论框架构建 \\ \addlinespace
+知识库构建 & 本体建模、知识抽取 & CIDOC CRM本体扩展；基于LLM的自动化知识抽取 \\ \addlinespace
+形式分析 & 语义分割、空间句法 & 深度学习模型训练；拓扑计算与伦理句法建模 \\ \addlinespace
+规则分析 & 符号学解码、图谱推理 & 知识图谱推理；基于RAG架构的LLM多跳推理 \\ \addlinespace
+案例验证 & 田野调查、专家评审 & 实地测绘与影像采集；跨案例对比验证 \\
 \bottomrule
 \end{tabularx}
+\endgroup % 结束局部作用域并自动闭合字体设置
 
 \subsubsection{可行性论证}
 
