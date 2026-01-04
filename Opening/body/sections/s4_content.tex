@@ -1,5 +1,149 @@
 \subsection{主要研究内容}
-（撰写宜使用将来时态，不能只列出论文目录来代替对研究内容的分析论述）
 
+本论文将围绕"规则驱动型建筑"的类型学理论建构与多模态人工智能分析方法开发两条主线展开，以广府宗祠为实证案例。论文共分为六章，各章研究内容如下：
+
+
+% ---------------------------------------------------------------------
+% 4.1 主要研究内容
+% ---------------------------------------------------------------------
+
+\subsubsection{第一章 绪论}
+本章将阐明研究的问题意识与学术定位。首先，将从建筑类型学的认识论困境出发，分析罗西类型学的核心贡献与隐含假设，指出其对"形式模糊型"建筑关注不足的理论空白。其次，将以中国传统民间建筑、尤其是广府宗祠为例，论证"形式模糊型"建筑对既有类型学理论的挑战，提出核心研究问题：如果形式不具备独特性，类型的持久性何以可能？再次，将明确本研究的理论目的、方法目的与实证目的，阐述研究的理论意义、方法意义与实践意义。最后，将系统梳理建筑类型学、空间分析方法、符号学与建筑、人工智能与文化遗产、华南宗族与礼制等领域的国内外研究现状，定位本研究的切入点与创新空间。
+
+\subsubsection{第二章 理论建构：罗西类型学的拓展与规则驱动型建筑}
+本章将完成核心理论建构工作。
+\begin{enumerate}[label=(\arabic*)]
+    \item 第一节将系统阐释罗西类型学的核心命题与方法论遗产，包括"类型作为集体记忆的载体""持久性"（Permanence）概念以及"记忆装置"（Apparatus）概念，分析罗西理论的原创性贡献，揭示其对建筑空间模式分析的启发意义。
+    
+    \item 第二节将界定罗西类型学的适用边界与理论空白，论证其基于西方经验的预设——类型的可识别性依赖于形式的独特性与持久性——在面对"形式模糊型"建筑时的解释力不足。本节将指出：依赖单一视觉形态的分析路径无法有效表征此类建筑的空间模式，"记忆如何编码为形式"这一分析维度的缺失呼唤新的方法范式。
+    
+    \item 将提出"规则驱动型建筑"（Rule-driven Architecture）的核心概念，将其界定为一类形态生成主要受社会规则（礼制、禁忌、等级）支配的建筑类型，与"形式驱动型建筑"形成对照。本节将论证：对于规则驱动型建筑，转译结构持久而形式可变，其空间模式的完整表征必须同时处理视觉形态与文化规则两个维度，这构成了多模态解析框架的理论必要性。本节还将"记忆装置"概念操作化为"规则的编码装置"，提出"等级→轴线、禁忌→边界、仪式→动线"的编码机制假说，为跨模态语义关联提供理论模型。
+    
+    \item 第四节将论证多模态人工智能解析框架的理论基础与技术整合逻辑。将引入皮尔斯符号学的"符号-对象-解释项"三元关系，建立"视觉形态-文化规则-语义解读"的分析框架，为视觉语义分割与知识图谱的整合提供符号学依据；将拓展空间句法理论，从"物理可达性"发展到"伦理许可性"，提出"伦理句法"概念，为跨模态推理中的身份-空间关联提供理论支撑；将论证知识图谱作为"规则-形式转译结构"形式化表征工具的适用性，阐明其在实现从建筑形态到文化规则系统化解码中的关键作用。
+    
+    \item 将论证广府宗祠作为规则驱动型建筑典型案例的选择依据，包括其形式模糊性、规则主导性、资料丰富性与典型性，说明该案例对于验证多模态解析框架有效性的示范价值，明确案例研究的预期目标。
+    
+\end{enumerate}
+
+\subsubsection{第三章 基于 CIDOC CRM 的岭南传统建筑知识库构建}
+本章将完成知识表征框架设计与知识库构建工作。
+
+\begin{enumerate}[label=(\arabic*)]
+    \item 第一节将阐述知识库构建的理论基础，分析 CIDOC CRM (ISO 21127) 作为上层本体的理论定位与事件中心 (\textit{Event-centric}) 建模范式，论证其与规则驱动型建筑知识表征的契合度。
+    \item 第二节将完成领域本体设计工作。
+    \begin{enumerate}[label=(\alph*)]
+        \item 将设计核心类体系，包括建筑实体、空间单元、建筑构件、宗族角色、仪式活动、礼制规则、转译关系等，建立与 CIDOC CRM 核心类（\texttt{E22 Man-Made Object}、\texttt{E53 Place}、\texttt{E21 Person} 等）的映射关系。
+        \item 设计核心关系体系，包括空间关系 (\texttt{locate\_in}, \texttt{adjacent\_to})、规则关系 (\texttt{govern}, \texttt{restrict})、转译关系 (\texttt{encode\_as}) 等。
+    \end{enumerate}
+    \item 第三节将开发多源数据融合与知识抽取流程。整合结构化、半结构化与非结构化三类数据来源。开发礼制文献的 LLM 辅助实体关系抽取方法；实现视觉数据"语义分割 $\rightarrow$ 构件实体 $\rightarrow$ 图谱节点"的转化流程。
+    \item 第四节将完成知识库的技术实现与质量验证。采用图数据库与 RDF 三元组存储相结合的技术方案，建立本体一致性检查与领域专家评审机制。
+\end{enumerate}
+
+\subsubsection{第四章 形式驱动的人工智能分析框架}
+本章将开发视觉识别与空间模式提取的技术框架。
+
+\begin{enumerate}[label=(\arabic*)]
+    \item 第一节将阐明形式驱动分析框架在整体方法体系中的定位——对应符号学的"符号识别"环节，提取空间模式的形式表征。
+    \item 第二节将完成语义分割模型的设计与训练。将分割体系分为文本类（匾额、楹联等）、图像类（木雕、石雕等）、结构类（梁架、柱础等）三大类别。
+    \item 第三节将开发空间模式提取方法。分析各类元素的面积占比与空间分布规律。重点验证"文本中心"现象：量化文本类元素物理占比与语义权重的关系，从符号学角度解释文本作为"指示符号"的功能。
+    \item 第四节将探索空间句法的"伦理句法"拓展。应用传统空间句法完成拓扑分析后，引入"身份维度"，构建不同身份（长幼、男女、嫡庶等）的差异化可达性图谱。
+\end{enumerate}
+
+\subsubsection{第五章 规则驱动的人工智能分析框架与知识发现}
+本章将开发礼制逻辑表征与知识发现的技术框架，完成理论验证工作。
+
+\begin{enumerate}[label=(\arabic*)]
+    \item 第一节将阐明规则驱动分析框架在整体方法体系中的定位——对应符号学的"意义解码"环节，验证"规则驱动型建筑"理论假说。
+    \item 第二节将完成礼制知识抽取与形式化工作。建立转译结构的形式化表达体系，如：$等级 \rightarrow 轴线位置$（$\langle 角色, \text{has\_rank} \rangle \rightarrow \langle 空间, \text{locate\_at} \rangle$）等。
+    \item 第三节将构建基于 RAG（检索增强生成）的语义推理系统。整合知识库检索、大语言模型生成与推理路径溯源，设计事实查询、规则推理、情境判断、反事实推理四类任务。
+    \item 第四节将完成知识发现与案例深度分析。验证核心发现一：转译结构的稳定性；验证核心发现二：伦理句法的有效性。完成典型案例在仪式、等级、禁忌边界等方面的深度推演。
+    \item 第五节将完成框架整合与理论回应。评估本研究对罗西类型学拓展的验证效果，评估配套方法体系（符号学解释力、空间句法拓展可行性等）的整体效果。
+\end{enumerate}
+
+\subsubsection{第六章 结论与展望}
+本章将总结研究成果并展望未来方向。将从理论、方法、实证三个维度总结研究结论。凝练理论创新、方法创新、数据与应用创新点。客观分析研究局限，如案例地域覆盖、礼制文献依赖性等。最后从理论深化、方法拓展、应用迁移三个方向展望未来研究。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------------------------------------
+% 4.2 实施方案及其可行性论证
+% ---------------------------------------------------------------------
 \subsection{实施方案及其可行性论证}
-...
+
+\subsubsection{技术路线}
+本研究将构建"视觉语义分割—知识图谱建模—跨模态推理"三位一体的多模态人工智能解析框架，实现从建筑形态到文化规则的系统化解码：
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    node distance=1.5cm and 2cm,
+    block/.style={rectangle, draw, fill=blue!10, text width=5cm, text centered, rounded corners, minimum height=1cm},
+    smallblock/.style={rectangle, draw, fill=green!10, text width=4cm, text centered, rounded corners, minimum height=0.8cm},
+    arrow/.style={->, >=stealth, thick}
+]
+
+% 顶层框架
+\node [block] (framework) {多模态人工智能驱动的解析框架};
+
+% 三个核心模块
+\node [smallblock, below left=of framework, xshift=-2cm] (vision) {视觉语义分割\\（形式表征）};
+\node [smallblock, below=of framework] (knowledge) {知识图谱建模\\（规则表征）};
+\node [smallblock, below right=of framework, xshift=2cm] (reasoning) {跨模态推理\\（语义关联）};
+
+% 具体技术
+\node [smallblock, below=of vision] (vision-detail) {建筑图像 $\rightarrow$\\空间元素识别};
+\node [smallblock, below=of knowledge] (knowledge-detail) {礼制文献 $\rightarrow$\\转译结构形式化};
+\node [smallblock, below=of reasoning] (reasoning-detail) {图谱+LLM $\rightarrow$\\RAG语义问答};
+
+% 案例验证
+\node [block, below=3cm of knowledge, fill=orange!10] (validation) {广府宗祠案例验证};
+
+% 箭头连接
+\draw [arrow] (framework) -- (vision);
+\draw [arrow] (framework) -- (knowledge);
+\draw [arrow] (framework) -- (reasoning);
+
+\draw [arrow] (vision) -- (vision-detail);
+\draw [arrow] (knowledge) -- (knowledge-detail);
+\draw [arrow] (reasoning) -- (reasoning-detail);
+
+\draw [arrow] (vision-detail) -- (validation);
+\draw [arrow] (knowledge-detail) -- (validation);
+\draw [arrow] (reasoning-detail) -- (validation);
+
+\end{tikzpicture}
+\caption{多模态人工智能驱动的解析框架技术路线图}
+\label{fig:technical-route}
+\end{figure}
+
+\subsubsection{研究方法}
+\begin{tabularx}{\textwidth}{@{} p{2.5cm} p{3cm} L @{}}
+\toprule
+\textbf{研究阶段} & \textbf{核心方法} & \textbf{技术手段} \\ \midrule
+理论建构 & 文献分析、概念演绎 & 类型学批判性阅读；"规则驱动型建筑"理论框架构建 \\ \addlinespace
+知识库构建 & 本体建模、知识抽取 & CIDOC CRM本体扩展；基于大语言模型的自动化知识抽取 \\ \addlinespace
+形式分析 & 语义分割、空间句法 & 深度学习模型训练（SAM/DeepLabV3+）；拓扑计算与"伦理句法"建模 \\ \addlinespace
+规则分析 & 符号学解码、图谱推理 & 知识图谱推理；基于RAG架构的大语言模型多跳推理 \\ \addlinespace
+案例验证 & 田野调查、专家评审 & 实地测绘与影像采集；跨案例对比验证；专家知识交叉验证 \\
+\bottomrule
+\end{tabularx}
+
+\subsubsection{可行性论证}
+
+\textbf{理论可行性：}罗西类型学为本研究提供理论起点，皮尔斯符号学与空间句法提供方法论资源，华南宗族研究提供人类学积淀。三者的整合具有内在逻辑一致性，"规则驱动型建筑"理论作为补充性框架，能够有效衔接类型学传统与东方建筑特质，理论路径清晰可行。
+
+\textbf{技术可行性：}语义分割、知识图谱、大语言模型三项核心技术均已成熟，在文化遗产数字化领域已有成功应用先例（如敦煌壁画分析、古建筑病害检测等）。本研究的技术整合路径清晰，各模块间接口明确，且已具备高性能计算资源（4×RTX 4090）与跨学科合作平台（北航计算机学院、莱顿大学数学系），技术实施风险可控。
+
+\textbf{数据可行性：}广府地区宗祠建筑保存完整、案例充足，族谱方志等历史文献资料丰富且可获取性强。前期田野调查已积累初步数据基础，建立了与地方文保部门、宗族组织的良好合作关系，后续数据采集渠道畅通，样本代表性有保障。
