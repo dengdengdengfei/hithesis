@@ -322,7 +322,7 @@
     afterindent=true,
     beforeskip={3bp},
     afterskip={3bp},
-    format={\heiti\normalsize},
+    format={\heiti\normalsize[1.25]},
     aftername=\enspace,
     fixskip=true,
     break={},
